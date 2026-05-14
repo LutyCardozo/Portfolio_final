@@ -820,6 +820,66 @@ height: 70px;
     letter-spacing:0.28em;
   }
 
+  /* HOME MOBILE: recorrido vertical por checkpoints */
+  .race{
+    height:auto;
+    min-height:auto;
+    padding:80px 0 90px;
+    background:var(--beige);
+  }
+
+  .horizontal{
+    position:relative;
+    top:auto;
+    height:auto;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:34px;
+    padding:0 20px;
+    transform:none !important;
+    overflow:hidden;
+  }
+
+  .line-container{
+    display:none !important;
+  }
+
+  .checkpoint{
+    width:min(82vw, 360px);
+    min-width:0;
+    margin:0 !important;
+    padding:22px 22px;
+    border-radius:22px;
+    background:rgba(255, 255, 255, 0.173);
+    box-shadow:0 18px 42px rgba(0,0,0,0.06);
+  }
+
+  .checkpoint:nth-of-type(odd){
+    align-self:flex-start;
+  }
+
+  .checkpoint:nth-of-type(even){
+    align-self:flex-end;
+  }
+
+  .checkpoint h2{
+    font-size:clamp(30px, 11vw, 46px);
+    line-height:1.15;
+  }
+
+  .checkpoint p,
+  .checkpoint .note,
+  .checkpoint .dark{
+    font-size:15px;
+    line-height:1.55;
+  }
+
+  .checkpoint.meta.visible{
+    margin:0 !important;
+  }
+
   .ver-mas-wrapper{
     margin-top:40px;
     padding:0 20px;
@@ -1068,7 +1128,56 @@ height: 70px;
     padding:0 20px 24px;
   }
 
+  .checkpoint.visible:first-of-type{
+    background-color: transparent;
+    box-shadow: none;
+    
+  }
+
+  .checkpoint.visible:first-of-type p{
+    font-size: clamp(36px, 10vw, 50px);
+    text-align: center;
+  } 
+
+  .checkpoint.visible h2{
+    font-size:clamp(30px, 9vw, 46px);
+    padding-bottom: 10px;
+  }
+
   .proyectos-preview .proyecto-card{
     aspect-ratio:1.35 / 1;
   }
+
+  .footer__inner{
+    grid-template-columns:1fr;
+    gap:42px;
+  }
+
+  .footer__title{
+    font-size:clamp(52px, 16vw, 74px);
+    line-height:0.92;
+    letter-spacing:-0.04em;
+    word-break:normal;
+    overflow-wrap:normal;
+    max-width:100%;
+  }
+
+  h4.footer-title {
+    font-size:10px;
+    line-height:0.9;
+    letter-spacing:-0.02em;
+    font-weight:500;
+    color:#202020;
+    text-align:center;
+  }
+
+  .boceto-caption,
+  .boceto-caption--right,
+  .boceto-caption--left{
+    display:none !important;
+    visibility:hidden !important;
+    opacity:0 !important;
+  }
+
+  
 }

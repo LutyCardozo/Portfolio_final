@@ -15,6 +15,7 @@ const rightArrow = document.querySelector('.arrow-right');
 
 let pathLength = 0;
 let scrollDistance = 0;
+const mobileRaceQuery = window.matchMedia('(max-width: 768px)');
 
 function setupLine() {
     if (!path) return;
@@ -28,6 +29,13 @@ setupLine();
 
 function setRaceScrollDistance() {
     if (!race || !horizontal) return;
+
+    if (mobileRaceQuery.matches) {
+        scrollDistance = 0;
+        race.style.height = '';
+        horizontal.style.transform = '';
+        return;
+    }
 
     const raceWidth = race.offsetWidth || window.innerWidth;
     const naturalMove = Math.max(horizontal.scrollWidth - raceWidth, 0);
@@ -56,6 +64,7 @@ let currentProgress = 0;
 let animationStarted = false;
 
 function getRaceProgress() {
+    if (mobileRaceQuery.matches) return 0;
     if (!race || scrollDistance <= 0) return 0;
 
     const rect = race.getBoundingClientRect();
@@ -88,7 +97,9 @@ function showCheckpointsOnScreen() {
 
     checkpoints.forEach((checkpoint) => {
         const rect = checkpoint.getBoundingClientRect();
-        const appearsInView = rect.left < window.innerWidth * 0.68 && rect.right > window.innerWidth * 0.08;
+        const appearsInView = mobileRaceQuery.matches
+            ? rect.top < window.innerHeight * 0.78 && rect.bottom > window.innerHeight * 0.12
+            : rect.left < window.innerWidth * 0.68 && rect.right > window.innerWidth * 0.08;
 
         if (appearsInView) {
             checkpoint.classList.add('visible');
@@ -100,6 +111,13 @@ function showCheckpointsOnScreen() {
 
 function animateRace() {
     if (!horizontal || !race) return;
+
+    if (mobileRaceQuery.matches) {
+        horizontal.style.transform = '';
+        showCheckpointsOnScreen();
+        requestAnimationFrame(animateRace);
+        return;
+    }
 
     const movementEase = 0.095;
     currentProgress += (targetProgress - currentProgress) * movementEase;
@@ -140,6 +158,14 @@ window.addEventListener('resize', () => {
     updateTargetProgress();
     updateHeaderBackground();
 });
+
+mobileRaceQuery.addEventListener('change', () => {
+    setRaceScrollDistance();
+    setupLine();
+    updateTargetProgress();
+    showCheckpointsOnScreen();
+});
+
 window.addEventListener('load', () => {
     initRaceAnimation();
     updateHeaderBackground();
