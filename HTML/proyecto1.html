@@ -33,9 +33,9 @@
 
             <ul id="site-menu" class="nav-menu">
                 <li><a href="../index.html">Inicio</a></li>
-                <li><a href="../index.html#proyectos">Proyectos</a></li>
+                <li><a href="proyectos.html">Proyectos</a></li>
                 <li><a href="../index.html#sobre-mi">Sobre mí</a></li>
-                <li><a href="../index.html#contacto">Contacto</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -232,10 +232,11 @@
             <div class="footer__side">
 
                 <!-- Form Netlify -->
-                <form name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field"
-                    class="contact-form" id="contact-form">
+                <form name="contacto" method="POST" action="/HTML/proyecto1.html" data-netlify="true" netlify="true"
+                    netlify-honeypot="bot-field" class="contact-form" id="contact-form">
                     <!-- importante para Netlify: -->
                     <input type="hidden" name="form-name" value="contacto">
+                    <input type="hidden" name="subject" value="Nuevo mensaje desde el portfolio de Luciana Cardozo">
                     <!-- honeypot -->
                     <p class="hidden">
                         <label>Don’t fill this out if you’re human: <input name="bot-field"></label>

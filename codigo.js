@@ -319,3 +319,17 @@ if (menuToggle && navMenu) {
         }
     });
 }
+
+// Contact form status for Netlify Forms
+const contactForm = document.getElementById("contact - form");
+const formStatus = document.getElementById("form - status");
+
+
+if (contactForm && formStatus) {
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.has("success")) {
+        formStatus.textContent = "Mensaje enviado correctamente.Gracias por escribirme.";
+        formStatus.classList.add("is - visible");
+    }
+}

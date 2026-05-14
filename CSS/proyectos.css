@@ -383,9 +383,9 @@
 
 
 .project-section-title h2{
-  font-size:32px;
+  font-size:20px;
   margin-top:10px;
-    letter-spacing:0.3em;
+    /* letter-spacing:0.3em; */
   text-transform:uppercase;
   opacity:0.6;
 }
@@ -434,9 +434,9 @@
 
 /* CLOSING */
 .project-closing{
-  padding:30px 10%;
+  padding:10px 10%;
   text-align:center;
-  background:#f7f5ef;
+  
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -465,7 +465,7 @@
 }
 
 .project-back-link:hover{
-  background:#ffffff;
+  background:#b5b5b5;
   color:#000;
 }
 
@@ -693,6 +693,21 @@ body.proyectos-page{
   padding:210px 4.2vw 100px;
 }
 
+.trabajos-main > .proyectos-title{
+  width:100%;
+  margin:0 0 90px;
+  padding:0;
+  text-align:center;
+  font-family:"Inter", sans-serif;
+  font-size:clamp(64px, 9vw, 80px);
+  line-height:0.9;
+  font-weight:300;
+  font-style:italic;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:#111;
+}
+
 .trabajos-grid{
   width:100%;
   display:grid;
@@ -809,6 +824,12 @@ body.proyectos-page{
     padding:130px 20px 70px;
   }
 
+  .trabajos-main > .proyectos-title{
+    margin-bottom:55px;
+    font-size:clamp(42px, 15vw, 78px);
+    letter-spacing:0.16em;
+  }
+
   .trabajos-grid{
     grid-template-columns:1fr;
     gap:22px;
@@ -858,8 +879,7 @@ header{
   justify-content:center;
   width:34px;
   height:34px;
-  margin:0 auto;
-  padding-top: 10px;
+  margin:10px auto;
   text-decoration:none;
 }
 
