@@ -64,7 +64,7 @@
         <section class="project-race-card" aria-label="Ficha del proyecto">
             <div class="race-card__item">
                 <span>Alcance</span>
-                <strong>Tapa y contratapa, interior con un mínimo de 3 ilustraciones</strong>
+                <strong>Tapa y contratapa con ilustraciones</strong>
             </div>
 
             <div class="race-card__item">
@@ -178,14 +178,14 @@
                     <div class="image-placeholder">
                         <img src="/imgs/PORTADA%20LIBRO.jpg" alt="Detalle visual del proyecto">
                     </div>
-                    <figcaption>Detalle visual</figcaption>
+
                 </figure>
 
                 <figure class="gallery-item">
                     <div class="image-placeholder">
                         <img src="/imgs/juceca_enlibro_recortado.jpg" alt="">
                     </div>
-                    <figcaption>Detalle visual</figcaption>
+
                 </figure>
 
                 <figure class="gallery-item">
@@ -197,15 +197,16 @@
             </div>
         </section>
 
-        <!-- CIERRE -->
         <section class="project-closing">
-            <p>Aprendizaje del recorrido</p>
-            <h2>
-                Diseñar también es sostener el proceso cuando el camino cambia.
-            </h2>
 
             <a href="../index.html#proyectos" class="project-back-link">Volver a proyectos</a>
+
+            <a href="https://www.behance.net/gallery/248870921/Diseno-editorial-e-ilustraciones?tracking_source=project_owner_other_projects"
+                class="behance-link" target="_blank" aria-label="Ver proyecto en Behance">
+                <img src="/imgs/icons/1x/Behance icon black.png" alt="Behance">
+            </a>
         </section>
+
 
     </main>
 
@@ -216,7 +217,60 @@
     <a class="project-nav next" href="proyecto2.html" aria-label="Proyecto siguiente">
         <span>&#10095;</span>
     </a>
+    <footer id="contacto" class="footer-contact">
+        <div class="footer__inner">
+            <!-- Columna izquierda: claim grande -->
+            <div class="footer__cta">
+                <p class="footer__eyebrow">¿Tenés un proyecto en mente?</p>
+                <h4 class="footer__title">Trabajemos<br>juntos</h4>
 
+                <!-- Flecha para hacer scroll al form en mobile -->
+
+            </div>
+
+            <!-- Columna derecha: datos + form -->
+            <div class="footer__side">
+
+                <!-- Form Netlify -->
+                <form name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+                    class="contact-form" id="contact-form">
+                    <!-- importante para Netlify: -->
+                    <input type="hidden" name="form-name" value="contacto">
+                    <!-- honeypot -->
+                    <p class="hidden">
+                        <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
+                    </p>
+
+                    <div class="field">
+                        <label for="nombre">Nombre</label>
+                        <input id="nombre" name="name" type="text" autocomplete="name" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Correo electrónico</label>
+                        <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="message" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        Enviar
+                        <span class="btn-submit__icon" aria-hidden="true">↗</span>
+                    </button>
+
+                    <!-- mensaje de estado -->
+                    <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <p>© <span id="year"></span> Luciana Cardozo.</p>
+        </div>
+    </footer>
     <script src="../codigo.js"></script>
     <script src="../JS/proyectos.js"></script>
 </body>

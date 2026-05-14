@@ -191,4 +191,131 @@ if (menuToggle && navMenu) {
             navMenu.classList.remove('active');
         });
     });
+
+    /* HERO ROTATING TEXT */
+    const rotatingWords = document.querySelectorAll('.hero-rotating-text .word');
+
+    if (rotatingWords.length) {
+        let currentWord = 0;
+
+        setInterval(() => {
+            rotatingWords[currentWord].classList.remove('active');
+
+            currentWord = (currentWord + 1) % rotatingWords.length;
+
+            rotatingWords[currentWord].classList.add('active');
+        }, 2200);
+    }
+
+    /* HERO SCROLL TRANSITION */
+    /* HERO SCROLL TRANSITION - primer scroll cambia el texto, segundo scroll avanza */
+    const heroSection = document.querySelector('.hero');
+    const heroMainTitle = document.querySelector('.hero-main-title');
+    const heroScrollContent = document.querySelector('.hero-scroll-content');
+    let heroTextChanged = false;
+    let heroLockedScroll = false;
+    let heroStartY = 0;
+
+    function showHeroStory() {
+        if (!heroMainTitle || !heroScrollContent) return;
+
+        heroMainTitle.classList.add('hide');
+        heroScrollContent.classList.add('show');
+
+        rotatingWords.forEach(word => {
+            word.classList.remove('active');
+            word.style.opacity = '0';
+            word.style.transform = 'translateX(-50%) translateY(-20px)';
+        });
+
+        heroTextChanged = true;
+    }
+
+    function showHeroTitle() {
+        if (!heroMainTitle || !heroScrollContent) return;
+
+        heroMainTitle.classList.remove('hide');
+        heroScrollContent.classList.remove('show');
+
+        rotatingWords.forEach((word, index) => {
+            word.style.opacity = '';
+            word.style.transform = '';
+            word.classList.toggle('active', index === 0);
+        });
+
+        heroTextChanged = false;
+    }
+
+    window.addEventListener('wheel', (event) => {
+        if (!heroSection || !heroMainTitle || !heroScrollContent) return;
+
+        const isAtTop = window.scrollY <= 2;
+        const scrollingDown = event.deltaY > 0;
+        const scrollingUp = event.deltaY < 0;
+
+        if (heroLockedScroll) {
+            event.preventDefault();
+            event.stopPropagation();
+            window.scrollTo(0, 0);
+            return;
+        }
+
+        if (isAtTop && scrollingDown && !heroTextChanged) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            heroLockedScroll = true;
+            document.documentElement.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden';
+            window.scrollTo(0, 0);
+
+            showHeroStory();
+
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                document.documentElement.style.overflow = '';
+                document.body.style.overflow = '';
+                heroLockedScroll = false;
+            }, 650);
+
+            return;
+        }
+
+        if (isAtTop && scrollingUp && heroTextChanged) {
+            event.preventDefault();
+            event.stopPropagation();
+            window.scrollTo(0, 0);
+            showHeroTitle();
+        }
+    }, { passive: false });
+
+    window.addEventListener('touchstart', (event) => {
+        heroStartY = event.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (event) => {
+        if (!heroSection || !heroMainTitle || !heroScrollContent) return;
+
+        const isAtTop = window.scrollY <= 2;
+        const currentY = event.touches[0].clientY;
+        const scrollingDown = heroStartY > currentY;
+
+        if (isAtTop && scrollingDown && !heroTextChanged) {
+            event.preventDefault();
+            window.scrollTo(0, 0);
+            showHeroStory();
+        }
+    }, { passive: false });
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY <= 2 && !heroTextChanged) {
+            showHeroTitle();
+        }
+    }, { passive: true });
+
+    window.addEventListener('load', () => {
+        if (window.scrollY <= 2) {
+            showHeroTitle();
+        }
+    });
 }

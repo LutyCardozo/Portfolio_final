@@ -5,7 +5,7 @@ html{
 }
 :root {
   --naranja: #DF783C;
-  --verde: #A8B8A0;
+  --verde: #96a28f;
   --beige: #E7E4DA;
   --azul-oscuro: #154D62;
   --azul: #1F5E9D;
@@ -28,7 +28,6 @@ body{
 
 
 header{
-  
   position:fixed;
   top:0;
   left:0;
@@ -105,6 +104,7 @@ height: 70px;
   object-fit:contain;
 }
 
+
 .logo{
   font-family:"Cormorant Garamond", serif;
   font-size:30px;
@@ -149,13 +149,13 @@ height: 70px;
 /* HERO */
 .hero{
   position:relative;
-  width:100vw;
+  width:100%;
   height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:0 10%;
+  padding:0 5vw;
   overflow:hidden;
   color:#fff;
   background:
@@ -208,6 +208,90 @@ height: 70px;
   max-width:1300px;
 }
 
+.hero-intro{
+  position:relative;
+  min-height:100vh;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.hero-rotating-text{
+  position:relative;
+  height:34px;
+  width:100%;
+  margin-bottom:34px;
+  overflow:hidden;
+}
+
+.hero-rotating-text .word{
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%) translateY(18px);
+  opacity:0;
+  font-family:"Inter", sans-serif;
+  color:rgba(255,255,255,0.82);
+  letter-spacing:0.46em;
+  text-transform:uppercase;
+  font-size:clamp(15px, 1.25vw, 22px);
+  font-weight:400;
+  white-space:nowrap;
+  transition:opacity .55s ease, transform .55s ease;
+}
+
+.hero-rotating-text .word.active{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+.hero-main-title{
+  font-size:clamp(72px, 13vw, 180px) !important;
+  line-height:.85 !important;
+  letter-spacing:-0.055em !important;
+  font-weight:500 !important;
+  margin:0 !important;
+  transition:opacity .55s ease, transform .55s ease;
+}
+
+.hero-main-title.hide{
+  opacity:0;
+  transform:translateY(-28px);
+}
+
+.hero-scroll-content{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:0 6vw;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .65s ease;
+}
+
+.hero-scroll-content.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.hero-story{
+  font-family:"Inter", sans-serif;
+  text-align:center;
+  font-size:clamp(32px, 2vw, 50px);
+  line-height:1.55;
+  letter-spacing:0.10em;
+  font-weight:300;
+  text-transform:uppercase;
+  margin-bottom:15px;
+  color:#ffffff;
+}
+
 .hero h1{
   font-family:"Inter", sans-serif;
   text-align:center;
@@ -221,17 +305,19 @@ height: 70px;
   color:#ffffff;
 }
 
+
+
 .serif{
   display:inline-block;
-  font-family:"Cormorant Garamond", serif;
+  font-family:"Playwrite DK Loopet", sans-serif;
   font-style:italic;
   font-weight:400;
-  font-size:1.7em;
+  font-size:1.5em;
   line-height:0;
-  letter-spacing:-0.055em;
+  letter-spacing:-0.03em;
   text-transform:lowercase;
   position:relative;
-  top: 0.05em;
+  top: 0.10em;
   
 }
 
@@ -247,7 +333,7 @@ height: 70px;
 }
 
 .hero-content a.subtitle{
-  /* margin-top: 25px; */
+  margin-top: 25px;
   text-decoration: none;
   user-select: none;
   
@@ -264,6 +350,19 @@ height: 70px;
 
 
 .hero-content::after{
+  content:"";
+  display:block;
+  width:64px;
+  height:1px;
+  margin:26px auto 0;
+  background:rgba(255,255,255,0.6);
+}
+
+.hero-intro::after{
+  display:none;
+}
+
+.hero-scroll-content::after{
   content:"";
   display:block;
   width:64px;
@@ -439,6 +538,7 @@ height: 70px;
 }
 
 .cierre h2{
+  font-family:"Inter", sans-serif;
   font-size:clamp(40px,6vw,80px);
 }
 
@@ -703,6 +803,21 @@ height: 70px;
   .nav-menu a{
     font-size:18px;
     letter-spacing:0.22em;
+  }
+
+  .hero-main-title{
+    font-size:clamp(58px, 18vw, 92px) !important;
+  }
+
+  .hero-story{
+    font-size:clamp(24px, 7vw, 40px);
+    line-height:1.35;
+    letter-spacing:0.06em;
+  }
+
+  .hero-rotating-text .word{
+    font-size:13px;
+    letter-spacing:0.28em;
   }
 
   .ver-mas-wrapper{

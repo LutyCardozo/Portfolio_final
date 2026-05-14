@@ -434,9 +434,13 @@
 
 /* CLOSING */
 .project-closing{
-  padding:120px 10%;
+  padding:30px 10%;
   text-align:center;
   background:#f7f5ef;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 }
 
 .project-closing p{
@@ -453,10 +457,10 @@
 
 .project-back-link{
   text-decoration:none;
-  border:1px solid #ffffff;
+  border:1px solid #000000;
   padding:12px 28px;
   border-radius:30px;
-  color:#ffffff;
+  color:#000000;
   transition:all .3s ease;
 }
 
@@ -838,3 +842,36 @@ header{
     rgba(168,184,160,0.65) 45%,
     rgba(21,77,98,0.62) 100%);
   }
+
+.project-links{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+}
+
+.behance-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:34px;
+  margin:0 auto;
+  padding-top: 10px;
+  text-decoration:none;
+}
+
+.behance-link img{
+  width:34px;
+  height:34px;
+  object-fit:contain;
+  display:block;
+  transition:transform 0.3s ease, opacity 0.3s ease;
+}
+
+.behance-link:hover img{
+  transform:scale(1.08);
+  opacity:0.8;
+}
