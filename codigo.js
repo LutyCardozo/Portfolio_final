@@ -5,9 +5,6 @@ const checkpoints = document.querySelectorAll('.checkpoint');
 const header = document.querySelector('header');
 const esPaginaProyecto =
     document.body.classList.contains('project-page') ||
-    document.body.classList.contains('proyecto-page') ||
-    document.querySelector('.project-detail') ||
-    document.querySelector('.proyecto-detalle') ||
     document.querySelector('.project-hero');
 const proyectosTrack = document.querySelector('.proyectos-track');
 const leftArrow = document.querySelector('.arrow-left');
@@ -45,7 +42,6 @@ function setRaceScrollDistance() {
     if (lastCheckpoint) {
         const metaCenter = lastCheckpoint.offsetLeft + lastCheckpoint.offsetWidth / 2;
 
-        // El recorrido llega hasta Meta, dejando el checkpoint visible en pantalla.
         scrollDistance = Math.max(metaCenter - window.innerWidth * 0.55, 0);
     } else {
         scrollDistance = naturalMove;
@@ -54,8 +50,6 @@ function setRaceScrollDistance() {
     scrollDistance = Math.min(scrollDistance, naturalMove);
     scrollDistance = Math.max(scrollDistance, 0);
 
-    // La sección dura exactamente lo necesario para mover la línea;
-    // cuando termina, el sitio vuelve a bajar normalmente.
     race.style.height = `${window.innerHeight + scrollDistance}px`;
 }
 
@@ -174,7 +168,6 @@ window.addEventListener('load', () => {
 initRaceAnimation();
 updateHeaderBackground();
 
-// flechas de proyectos
 if (proyectosTrack && leftArrow && rightArrow) {
     function getProjectScrollAmount() {
         const card = proyectosTrack.querySelector('.proyecto-card');
@@ -200,7 +193,6 @@ if (proyectosTrack && leftArrow && rightArrow) {
     });
 }
 
-// menú hamburguesa
 const menuToggle = document.querySelector('.menu-toggle');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -210,7 +202,6 @@ if (menuToggle && navMenu) {
         navMenu.classList.toggle('active');
     });
 
-    // cerrar menú al hacer click en un link
     navMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             menuToggle.classList.remove('active');
@@ -346,16 +337,14 @@ if (menuToggle && navMenu) {
     });
 }
 
-// Contact form status for Netlify Forms
-const contactForm = document.getElementById("contact - form");
-const formStatus = document.getElementById("form - status");
+const contactForm = document.getElementById("contact-form");
+const formStatus = document.getElementById("form-status");
 
 
 if (contactForm && formStatus) {
     const params = new URLSearchParams(window.location.search);
 
     if (params.has("success")) {
-        formStatus.textContent = "Mensaje enviado correctamente.Gracias por escribirme.";
-        formStatus.classList.add("is - visible");
+        formStatus.textContent = "Mensaje enviado correctamente. Gracias por escribirme.";
     }
 }
