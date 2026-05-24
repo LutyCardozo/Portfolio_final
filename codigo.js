@@ -228,15 +228,17 @@ if (menuToggle && navMenu) {
     /* HERO SCROLL TRANSITION - primer scroll cambia el texto, segundo scroll avanza */
     const heroSection = document.querySelector('.hero');
     const heroMainTitle = document.querySelector('.hero-main-title');
+    const heroMainSubtitle = document.querySelector('.hero-main-subtitle');
     const heroScrollContent = document.querySelector('.hero-scroll-content');
     let heroTextChanged = false;
     let heroLockedScroll = false;
     let heroStartY = 0;
 
     function showHeroStory() {
-        if (!heroMainTitle || !heroScrollContent) return;
+        if (!heroMainTitle || !heroScrollContent || !heroMainSubtitle) return;
 
         heroMainTitle.classList.add('hide');
+        heroMainSubtitle.classList.add('hide');
         heroScrollContent.classList.add('show');
 
         rotatingWords.forEach(word => {
@@ -249,9 +251,10 @@ if (menuToggle && navMenu) {
     }
 
     function showHeroTitle() {
-        if (!heroMainTitle || !heroScrollContent) return;
+        if (!heroMainTitle || !heroScrollContent || !heroMainSubtitle) return;
 
         heroMainTitle.classList.remove('hide');
+        heroMainSubtitle.classList.remove('hide');
         heroScrollContent.classList.remove('show');
 
         rotatingWords.forEach((word, index) => {
@@ -264,7 +267,7 @@ if (menuToggle && navMenu) {
     }
 
     window.addEventListener('wheel', (event) => {
-        if (!heroSection || !heroMainTitle || !heroScrollContent) return;
+        if (!heroSection || !heroMainTitle || !heroScrollContent || !heroMainSubtitle) return;
 
         const isAtTop = window.scrollY <= 2;
         const scrollingDown = event.deltaY > 0;
@@ -311,7 +314,7 @@ if (menuToggle && navMenu) {
     }, { passive: true });
 
     window.addEventListener('touchmove', (event) => {
-        if (!heroSection || !heroMainTitle || !heroScrollContent) return;
+        if (!heroSection || !heroMainTitle || !heroMainSubtitle || !heroScrollContent) return;
 
         const isAtTop = window.scrollY <= 2;
         const currentY = event.touches[0].clientY;
