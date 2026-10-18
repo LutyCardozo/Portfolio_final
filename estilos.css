@@ -243,9 +243,9 @@ height: 70px;
 }
 
 .hero-main-title{
-  font-size:clamp(72px, 8vw, 180px) !important;
-  line-height:.85 !important;
-  letter-spacing:-0.02em !important;
+  font-size:clamp(112px, 11vw, 172px) !important;
+  line-height:1.1 !important; /* Adjusted line-height for better readability on smaller screens */
+  letter-spacing:-0.05em !important;
   font-weight:500 !important;
   margin:0 !important;
   transition:opacity .55s ease, transform .55s ease;
@@ -289,6 +289,8 @@ height: 70px;
   margin-bottom:15px;
   color:#ffffff;
 }
+
+
 
 .hero h1{
   font-family:"Inter", sans-serif;
@@ -513,6 +515,7 @@ height: 70px;
   align-items:center;
   justify-content:center;
   text-align:center;
+  padding:3vw;
 }
 
 .cierre h2{
@@ -736,6 +739,10 @@ height: 70px;
 
 
 @media (max-width: 768px){
+  .hide-on-mobile{
+    display:none;
+  }
+
   .nav-bar{
     padding:18px 24px;
   }
@@ -780,11 +787,7 @@ height: 70px;
     font-size:clamp(58px, 18vw, 92px) !important;
   }
 
-  .hero-story{
-    font-size:clamp(24px, 7vw, 40px);
-    line-height:1.35;
-    letter-spacing:0.06em;
-  }
+ 
 
   .hero-rotating-text .word{
     font-size:13px;
